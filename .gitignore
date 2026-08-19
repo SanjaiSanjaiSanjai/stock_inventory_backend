@@ -2,8 +2,9 @@
 .env
 .env.*
 !.env.example
+*.local
 
-# Python virtual environments and caches
+# Python virtual environments, caches, and build output
 .venv/
 venv/
 env/
@@ -16,18 +17,32 @@ __pycache__/
 .ruff_cache/
 .coverage
 htmlcov/
+build/
+*.egg-info/
+
+# Node.js dependencies, logs, and build output
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+dist/
+dist-ssr/
 
 # Runtime-generated uploads and local databases
 uploads/
 *.sqlite3
 *.db
 
-# Build and package output
-build/
-dist/
-*.egg-info/
-
 # IDE and operating-system files
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,79 @@
+/* Center the form */
+.form-title {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.signup-form-container {
+    width: 350px;
+    margin: 300px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+}
+
+/* Input container */
+.signup-form-container > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Inputs */
+.signup-inputs {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+    margin-bottom: 15px;
+}
+
+.signup-inputs:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+/* Button */
+.signup-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Login text */
+.signup-form-container p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.signup-form-container a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.signup-form-container a:hover {
+    text-decoration: underline;
+}
