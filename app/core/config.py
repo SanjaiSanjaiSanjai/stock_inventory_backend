@@ -16,7 +16,11 @@ def _get_int_env(name: str, default: int) -> int:
 		return default
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = (
+	os.getenv("DATABASE_URL")
+	or os.getenv("POSTGRES_URL_NON_POOLING")
+	or os.getenv("POSTGRES_URL")
+)
 ACCESS_SECRET_KEY = os.getenv("JWT_ACCESSTOKEN_SECRET_KEY", "my-super-secret-access-token-key-change")
 REFRESH_SECRET_KEY = os.getenv("JWT_REFRESHTOKEN_SECRET_KEY", "my-super-secret-refresh-token-key-change")
 ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
