@@ -23,6 +23,11 @@ def create_application() -> FastAPI:
     )
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR.parent), name="uploads")
+
+    @app.get("/")
+    async def health_check():
+        return {"status": "ok", "service": "stock-inventory-backend"}
+
     app.include_router(api_router)
     return app
 
