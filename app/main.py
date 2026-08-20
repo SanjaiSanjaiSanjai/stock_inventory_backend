@@ -26,5 +26,6 @@ def create_application() -> FastAPI:
     return app
 
 
-Base.metadata.create_all(bind=engine)
+if engine is not None:
+    Base.metadata.create_all(bind=engine)
 app = create_application()
