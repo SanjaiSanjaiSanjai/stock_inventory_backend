@@ -16,6 +16,11 @@ def _get_int_env(name: str, default: int) -> int:
 		return default
 
 
+def _get_str_env(name: str, default: str) -> str:
+	value = os.getenv(name, "").strip()
+	return value or default
+
+
 _database_url = (
 	os.getenv("DATABASE_URL")
 	or os.getenv("POSTGRES_URL_NON_POOLING")
@@ -26,9 +31,9 @@ DATABASE_URL = (
 	if _database_url
 	else None
 )
-ACCESS_SECRET_KEY = os.getenv("JWT_ACCESSTOKEN_SECRET_KEY", "my-super-secret-access-token-key-change")
-REFRESH_SECRET_KEY = os.getenv("JWT_REFRESHTOKEN_SECRET_KEY", "my-super-secret-refresh-token-key-change")
-ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+ACCESS_SECRET_KEY = _get_str_env("JWT_ACCESSTOKEN_SECRET_KEY", "my-super-secret-access-token-key-change")
+REFRESH_SECRET_KEY = _get_str_env("JWT_REFRESHTOKEN_SECRET_KEY", "my-super-secret-refresh-token-key-change")
+ALGORITHM = _get_str_env("JWT_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = _get_int_env("JWT_ACCESS_EXPIRE_MINUTES", 1)
 REFRESH_TOKEN_EXPIRE_MINUTES = _get_int_env("JWT_REFRESH_EXPIRE_MINUTES", 10)
 UPLOAD_DIR = Path("/tmp/uploads/products" if os.getenv("VERCEL") else "uploads/products")
