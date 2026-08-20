@@ -1,17 +1,8 @@
-# Stock inventory
+# Stock Inventory Backend
 
-This repository contains a React/Vite frontend and a FastAPI backend.
+FastAPI backend for the stock inventory application.
 
-## Frontend
-
-The frontend source code is in `src/`.
-
-```bash
-npm install
-npm run dev
-```
-
-## Backend
+## Setup
 
 The FastAPI source code is in `app/`.
 
@@ -30,7 +21,7 @@ The FastAPI source code is in `app/`.
    uvicorn app.main:app --reload
    ```
 
-## Backend structure
+## Structure
 
 ```text
 app/
@@ -44,5 +35,5 @@ app/
 alembic/                    # Database migrations
 ```
 
-`uploads/`, `.env`, `node_modules/`, virtual environments, and build output
-are generated locally and intentionally excluded from Git.
+`uploads/`, `.env`, virtual environments, and build output are generated locally
+and intentionally excluded from Git.
