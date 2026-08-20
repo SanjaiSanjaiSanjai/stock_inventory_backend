@@ -1,7 +1,5 @@
 """ASGI application entry point."""
 
-import os
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -32,6 +30,6 @@ def create_application() -> FastAPI:
     return app
 
 
-if engine is not None and not os.getenv("VERCEL"):
+if engine is not None:
     Base.metadata.create_all(bind=engine)
 app = create_application()

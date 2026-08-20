@@ -18,7 +18,7 @@ class UserRole(str, enum.Enum):
     SUPERADMIN = "superadmin"
 
 
-user_role_enum = Enum(UserRole, name="user_role", values_callable=lambda obj: [member.value for member in obj], create_type=False)
+user_role_enum = Enum(UserRole, name="user_role", values_callable=lambda obj: [member.value for member in obj])
 
 
 class SignUp(Base):
