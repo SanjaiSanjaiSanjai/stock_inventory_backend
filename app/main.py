@@ -1,12 +1,13 @@
 """ASGI application entry point."""
 
-from pathlib import Path
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.api.v1.router import api_router
+from app.core.config import UPLOAD_DIR
 from app.db.session import engine
 from app.models import Base
 
@@ -20,12 +21,12 @@ def create_application() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    Path("uploads/products").mkdir(parents=True, exist_ok=True)
-    app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR.parent), name="uploads")
     app.include_router(api_router)
     return app
 
 
-if engine is not None:
+if engine is not None and not os.getenv("VERCEL"):
     Base.metadata.create_all(bind=engine)
 app = create_application()

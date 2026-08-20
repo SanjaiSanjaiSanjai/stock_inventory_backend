@@ -8,13 +8,13 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import adminmiddleware, staff_or_admin_middleware
+from app.core.config import UPLOAD_DIR
 from app.db.session import get_db
 from app.models import AddnewProducts, Stock
 from app.schemas.products import AvailableProductsResponse
 from app.services.products import build_product_image_filename
 
 router = APIRouter(tags=["products"])
-UPLOAD_DIR = Path("uploads/products")
 
 
 @router.get("/home/products", response_model=AvailableProductsResponse)

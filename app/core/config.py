@@ -1,6 +1,7 @@
 """Configuration loaded from environment variables."""
 
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -12,3 +13,4 @@ REFRESH_SECRET_KEY = os.getenv("JWT_REFRESHTOKEN_SECRET_KEY", "my-super-secret-r
 ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("JWT_ACCESS_EXPIRE_MINUTES", "1"))
 REFRESH_TOKEN_EXPIRE_MINUTES = int(os.getenv("JWT_REFRESH_EXPIRE_MINUTES", "10"))
+UPLOAD_DIR = Path("/tmp/uploads/products" if os.getenv("VERCEL") else "uploads/products")
