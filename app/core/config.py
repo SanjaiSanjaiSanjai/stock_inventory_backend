@@ -16,10 +16,15 @@ def _get_int_env(name: str, default: int) -> int:
 		return default
 
 
-DATABASE_URL = (
+_database_url = (
 	os.getenv("DATABASE_URL")
 	or os.getenv("POSTGRES_URL_NON_POOLING")
 	or os.getenv("POSTGRES_URL")
+)
+DATABASE_URL = (
+	_database_url.replace("postgres://", "postgresql+psycopg2://", 1)
+	if _database_url
+	else None
 )
 ACCESS_SECRET_KEY = os.getenv("JWT_ACCESSTOKEN_SECRET_KEY", "my-super-secret-access-token-key-change")
 REFRESH_SECRET_KEY = os.getenv("JWT_REFRESHTOKEN_SECRET_KEY", "my-super-secret-refresh-token-key-change")
